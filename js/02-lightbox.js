@@ -8,20 +8,15 @@ console.log(galleryEl);
 const markup = galleryItems
   .map(
     ({ original, preview, description }) =>
-      `<a class="gallery__item" href=${original}>
+      `<li><a class="gallery__item" href=${original}>
   <img class="gallery__image" src=${preview} alt=${description} />
-</a>`
+</a></li>`
   )
   .join("");
 galleryEl.innerHTML = markup;
 
-galleryEl.addEventListener("click", galleryClickHandler);
-
-function galleryClickHandler(event) {
-  event.preventDefault();
-}
-
 const lightbox = new SimpleLightbox(".gallery a", {
   captionsData: "alt",
   captionDelay: 250,
-});
+  captionPosition: "bottom",
+}); 
